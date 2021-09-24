@@ -5,6 +5,15 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "winston": "^3.3.3"
+  },
+  "scripts": {
+    "start": "nodemon -r ./node_modules/dotenv/config ./src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
   }
 }
