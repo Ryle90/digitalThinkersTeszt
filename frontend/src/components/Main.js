@@ -27,7 +27,9 @@ export default function Main() {
 
     return (
         <>
-            <Header></Header>
+            <Header
+                getCocktailList={getCocktailList}
+            ></Header>
             <main>
                 <h1>Hello</h1>      
 
