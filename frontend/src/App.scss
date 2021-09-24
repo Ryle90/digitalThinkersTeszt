@@ -1,1 +1,25 @@
-@import "../node_modules/bootstrap/scss/bootstrap"
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+header {
+    background: linear-gradient($teal-400, $teal-600);
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+    input {
+        max-width: 200px;
+        margin: {
+            left: 24px;
+            right: 6px;
+        }
+    }
+}
+
+main {
+    margin-top: 70px;
+}
