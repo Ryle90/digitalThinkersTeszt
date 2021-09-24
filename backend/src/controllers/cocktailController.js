@@ -1,8 +1,15 @@
 import cocktailService from "../services/cocktailService.js";
 
 const cocktailController = {
-    getCocktail() {
+    async getCocktail(req, res, next) {
+        const { name } = req.query;
         
+        try {
+            const cocktailList = await cocktailService.getCocktail(name);
+            res.json(cocktailList);
+        } catch (error) {
+            next(error)
+        }
     }
 }
 
