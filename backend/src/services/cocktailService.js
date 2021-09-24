@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import ValidationError from '../utils/ValidationError.js';
 
 const cocktailService = {
-    apiUrl: `www.thecocktaildb.com/api/json/v1/${process.env.API_KEY}`,
+    apiUrl: `https://www.thecocktaildb.com/api/json/v1/${process.env.API_KEY}`,
 
     async getCocktail(cocktailName) {
         let endpoint;
@@ -12,19 +12,18 @@ const cocktailService = {
             endpoint = `${this.apiUrl}/random.php`
         } else {
             endpoint = `${this.apiUrl}/search.php?s=${cocktailName}`
-        }
-
-
+        }        
+        
         const resultFromApi = await fetch(endpoint, {
             method: 'GET'
         })
-
+        
         const responseFromApi = await resultFromApi.json();
 
-        if (responseFromApi === null) {
+        if (responseFromApi.drinks === null) {
             throw new ValidationError('This cocktail is not found')
         } else {
-            const drinkList = this.processResponseFromApi(resultFromApi);
+            const drinkList = this.processResponseFromApi(responseFromApi);
             return drinkList
         }
     },
@@ -32,7 +31,7 @@ const cocktailService = {
     processResponseFromApi(responseFromApi) {
         const drinkList = [];
 
-        responseFromApi.forEach((drink) => {
+        responseFromApi.drinks.forEach((drink) => {
             const name = drink.strDrink;
             const ingredientsList = [];
             const meausermentList = [];
@@ -60,7 +59,6 @@ const cocktailService = {
         })
 
         return drinkList
-
     }
 }
 
