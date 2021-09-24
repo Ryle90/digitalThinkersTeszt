@@ -32,6 +32,7 @@ const cocktailService = {
         const drinkList = [];
 
         responseFromApi.drinks.forEach((drink) => {
+            const id = drink.idDrink;
             const name = drink.strDrink;
             const ingredientsList = [];
             const meausermentList = [];
@@ -49,6 +50,7 @@ const cocktailService = {
             })
 
             drinkList.push({
+                id,
                 name,
                 ingredientsList,
                 meausermentList,
