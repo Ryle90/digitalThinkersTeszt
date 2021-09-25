@@ -8,6 +8,7 @@ const cocktailController = {
             const cocktailList = await cocktailService.getCocktail(name);
             res.json(cocktailList);
         } catch (error) {
+            //Call error handler:
             next(error)
         }
     }

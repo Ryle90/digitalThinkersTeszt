@@ -12,3 +12,6 @@
 8. In backend folder write this command: `yarn start` to start the backend server
 9. Repeat this command in frontend folder to start the frontend server too
 10. Now, you can use the application
+
+### Query selector to search cocktail by name:
+Backend waits this query: `?name=example`

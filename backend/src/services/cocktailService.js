@@ -8,6 +8,7 @@ const cocktailService = {
     async getCocktail(cocktailName) {
         let endpoint;
 
+        //If request does not contain name query, program query a random cocktail from API
         if (!cocktailName) {
             endpoint = `${this.apiUrl}/random.php`
         } else {
@@ -38,7 +39,8 @@ const cocktailService = {
             const meausermentList = [];
             const prepare = drink.strInstructions; 
             const picture = drink.strDrinkThumb
-    
+            
+            //Response from API contains only string, but ingredients and measurments are better in an array
             Object.entries(drink).forEach(([key, value]) => {
                 if (key.includes('Ingredient') && value !== null) {
                     ingredientsList.push(value)
